@@ -1,6 +1,6 @@
 {
-  "name": "dilithium",
-  "version": "0.1.0",
+  "name": "v-dom",
+  "version": "0.0.1",
   "main": "index.js",
   "scripts": {
     "build": "webpack --progress --colors",

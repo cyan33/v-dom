@@ -6,16 +6,15 @@ function render(element, node) {
   node.appendChild(mountElement(element))
 }
 
-function flatten(arr) {
-  return [].concat.apply([], arr)
-}
-
-function hyperscript(type, props, ...children) {
+function hyperscript(type, props, children) {
   props = props || {}
+
+  // children could be both primitive type like string or number,
+  // or an array of element
   return {
     type,
     props,
-    children: flatten(children)
+    children
   }
 }
 
@@ -25,11 +24,7 @@ function hyperscript(type, props, ...children) {
  * In react, setState is the entry so here we keep the consistency
 */
 function setState(parent, prevElement, nextElement) {
-  // diff and patch
-  const patches = diff(prevElement, nextElement)
-  console.log(patches)
 
-  patch(parent, patches)
 }
 
 module.exports = {

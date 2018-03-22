@@ -17,9 +17,14 @@ function inc(parent, count) {
   setTimeout(() => inc(parent, count + 1), 500)
 }
 
-(function() {
-  const root = document.getElementById('root')
-  render(createComponent(1), root)
+// (function() {
+//   const root = document.getElementById('root')
+//   render(createComponent(1), root)
 
-  setTimeout(() => inc(root, 1), 500)
+//   setTimeout(() => inc(root, 1), 500)
+// })()
+
+
+(function() {
+  render(createComponent(2), document.getElementById('root'))
 })()

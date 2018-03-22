@@ -4,19 +4,18 @@ const { setProps } = require('./DOM')
  * element => real dom node
  */
 function mountElement(element) {
-  if (typeof element === 'string' || typeof element === 'number') {
-    return document.createTextNode(element)
+  let node
+  if (typeof element === 'number' || typeof element === 'string') {
+    node = document.createTextNode(element)
+  } else {
+    node = document.createElement(element.type)
+    if (typeof element.children === 'number' || typeof element.children === 'string') {
+      node.appendChild(mountElement(element.children))
+    } else {
+      element.children.map(mountElement)
+        .forEach(node.appendChild.bind(node))
+    }
   }
-  const node = document.createElement(element.type)
-
-  setProps(node, element.props)
-
-  if (element.children) {
-    element.children
-      .map(mountElement)
-      .forEach(node.appendChild.bind(node))
-  }
-
   return node
 }
 
