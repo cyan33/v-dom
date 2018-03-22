@@ -2,8 +2,8 @@
   "name": "demo",
   "version": "v0.0.1",
   "scripts": {
-    "build": "webpack --progress --colors",
-    "watch": "webpack --progress --colors --watch"
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "dependencies": {
     "babel-core": "^6.13.2",

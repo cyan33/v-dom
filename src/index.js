@@ -1,5 +1,6 @@
 const mountElement = require('./mountElement')
-const { diff, patch } = require('./diff')
+const diff = require('./diff')
+const patch = require('./patch')
 const { setProps } = require('./DOM')
 
 function render(element, node) {
@@ -24,7 +25,9 @@ function hyperscript(type, props, children) {
  * In react, setState is the entry so here we keep the consistency
 */
 function setState(parent, prevElement, nextElement) {
-
+  const p = diff(prevElement, nextElement)
+  console.log(p)
+  patch(parent, p)
 }
 
 module.exports = {
